@@ -8,8 +8,6 @@ The files in this repository are configured for a source-available release; **pu
 - [ ] Check every committed file and Git history for secrets, personal data, and licensing conflicts; rotate compromised keys.
 - [ ] Check potential name/logo conflicts and rights in intended launch markets. This package does not create a registered trademark.
 - [ ] Refresh `preview-home.png` from the finally deployed page: its previous real screenshot predates the header wording change from “OPEN SOURCE” to “SOURCE AVAILABLE”. Keep the original Logo and geometry intact.
-- [ ] Refresh `preview-home.png` from the finally deployed page: its previous real screenshot predates the header wording change from “OPEN SOURCE” to “SOURCE AVAILABLE”. Keep the original Logo and geometry intact.
-- [ ] Refresh `preview-home.png` from the finally deployed page: its previous real screenshot predates the header wording change from “OPEN SOURCE” to “SOURCE AVAILABLE”. Keep the original Logo and geometry intact.
 - [ ] Publish on the maintainer's verified GitHub account; preserve the git commit hash, source archive, and screenshot of the first public release.
 - [ ] After real site checks, publish a GitHub Release and preserve it in Zenodo; add **the actually issued DOI**, not a placeholder, to `CITATION.cff`.
 - [ ] Test GitHub Pages, consent/Turnstile, Workers AI, and Groq backup with genuine end-to-end calls before announcing them as fully live.
