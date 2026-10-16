@@ -1,0 +1,19 @@
+/* Copyright (c) 2026 Yuli Liu — YAO LAB. Source: PolyForm Shield 1.0.0; see LICENSE and NOTICE. */
+/* Responsive 3D perspective of six exact single-bit neighbors around a selected state. */
+.hexexp-compass{position:relative;isolation:isolate;display:block;width:100%;height:270px;min-height:0;overflow:hidden;border-radius:13px;background:radial-gradient(ellipse 50% 60% at 49% 48%,rgba(55,111,94,.33),rgba(13,39,38,.16) 66%,rgba(10,31,31,.05)),repeating-linear-gradient(0deg,transparent 0 44px,rgba(179,211,185,.024) 45px 46px);border:1px solid rgba(137,182,155,.21)}
+.hexorbit-canvas{position:absolute;width:100%;height:100%;inset:0;cursor:grab;touch-action:pan-y;display:block;z-index:1}
+.hexorbit-canvas:active{cursor:grabbing}
+.hexorbit-overlay{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hexorbit-node,.hexorbit-center{position:absolute;display:grid;place-items:center;transform:translate(-50%,-50%);border-radius:50%;font-family:var(--mono);}
+.hexorbit-node{width:30px;height:30px;pointer-events:auto;cursor:pointer;background:radial-gradient(circle at 30% 22%,#c0e9d6,#6cae99 64%,#23483f);box-shadow:0 0 0 1px rgba(205,242,220,.8),0 5px 19px rgba(93,209,165,.32),inset -2px -2px 5px rgba(15,62,50,.35);color:#143931;font-size:10px;font-weight:800;transition:filter .18s}
+.hexorbit-node:hover,.hexorbit-node:focus-visible{filter:brightness(1.3);outline:2px solid #f4ce8d;outline-offset:4px}
+.hexorbit-center{width:29px;height:29px;background:radial-gradient(circle at 30% 25%,#fff7d3,#e8bd80 66%,#986e3e);color:#274436;font-size:17px;box-shadow:0 0 23px rgba(239,191,116,.5);z-index:20}
+.hexorbit-brand,.hexorbit-hint{position:absolute;z-index:3;pointer-events:none;font:10px/1.4 var(--mono);letter-spacing:1.05px;color:#b2cfc0}
+.hexorbit-brand{left:13px;top:12px;color:#e4bd85}
+.hexorbit-hint{bottom:11px;left:13px;letter-spacing:.3px;font-size:10px}
+.hexorbit-pause{position:absolute;right:11px;top:10px;z-index:4;color:#e9ddc3;border:1px solid #92bbaa88;background:#1a4140cb;border-radius:6px;min-width:30px;height:28px;cursor:pointer;font-size:12px}
+.hexorbit-pause:focus-visible{outline:2px solid #e3c48f}
+.cast-time-note{margin:8px 0 0;color:#5e8475;font-size:12px;line-height:1.6}
+.orbit-loading{margin:auto;font:12px var(--mono);color:#9cc6b4}
+@media(max-width:720px){.hexexp-compass{height:246px}.hexorbit-node{width:28px;height:28px}}
+@media(prefers-reduced-motion:reduce){.hexorbit-node{transition:none}}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light"><meta name="theme-color" content="#f0ede4">
+<title>爻间 · YAO LAB | I Ching & Living Geometry</title>
+<meta name="author" content="Yuli Liu">
+<meta name="copyright" content="© 2026 Yuli Liu">
+<meta name="dcterms.rights" content="Original software: PolyForm Shield 1.0.0; classical texts: separate Wikisource CC BY-SA 3.0 terms">
+<meta name="description" content="问一卦，也读懂一套系统。可追溯的《周易》原典入口、现代文化解读、64态二进制图谱、六维超立方体与三钱法概率实验。">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="hex-lab.css">
+<link rel="stylesheet" href="hex-orbit.css" />
+</head>
+<body>
+<div class="page-grain" aria-hidden="true"></div>
+<header class="site-header wrap">
+  <a class="brand" href="#top" aria-label="爻间首页"><span class="logo" aria-hidden="true"><svg class="logo-glyph" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.25" y="2.25" width="59.5" height="59.5" rx="11" stroke="currentColor" stroke-width="2.5"/><g stroke="currentColor" stroke-width="4.2" stroke-linecap="square"><path d="M17 17H47M17 24.7H47M17 32.4H47"/><path d="M17 40.1H28.4M35.6 40.1H47M17 47.8H28.4M35.6 47.8H47"/></g><circle cx="32" cy="55" r="2" fill="#C28B5C"/></svg></span><span class="brand-copy"><b>爻间</b><small>YAO <em>/</em> LAB</small></span></a>
+  <nav aria-label="主导航"><a href="#divination">起卦实验</a><a href="#reading">经典解读</a><a href="#atlas">六十四态</a><a href="#methods">方法透明</a></nav>
+  <div class="header-tools"><div class="language-switch" role="group" aria-label="Language / 语言"><button type="button" data-lang="zh" class="lang-btn active" aria-pressed="true">中文</button><button type="button" data-lang="en" class="lang-btn" aria-pressed="false">EN</button></div><span class="header-index"><i></i> SOURCE AVAILABLE</span></div>
+</header>
+<main id="top">
+ <section class="hero wrap">
+   <div class="hero-main">
+    <div class="eyebrow">THE LIVING GEOMETRY OF CHANGE <span class="fine-line"></span> <span>文化 · 数学 · 交互</span></div>
+    <h1>让每一次变化，<br><span class="serif-italic">都有迹可循<span class="red-dot">。</span></span></h1>
+    <p class="hero-sub">在这里起卦、读卦，也探索六十四态的数学之美。</p>
+    <div class="hero-actions"><a class="pill primary" href="#divination">开始一次起卦 <span>↗</span></a><a class="pill secondary" href="#atlas">先看数学图谱 <span>↗</span></a></div>
+   </div>
+   <div class="hero-seal" aria-hidden="true"><canvas id="hero-viz" class="hero-viz" aria-label="可持续旋转的三维球体、晶格立方体及六维状态投影"></canvas><div class="hero-viz-glow"></div><div class="hero-viz-caption">FIGURE 01 <span>｜</span> SPHERE · CRYSTAL · HYPERCUBE <b>REAL-TIME WEBGL</b></div><div class="legacy-seal" hidden><div class="seal-ring outer">64 STATES · 6 BITS · 8 TRIGRAMS ·</div><div class="seal-ring inner"><span class="seal-symbol">䷊</span><span class="seal-caption">变 · 化</span></div><span class="seal-axis a1"></span><span class="seal-axis a2"></span></div></div>
+   <div class="hero-index"><span>传统的语言 · 现代的结构</span><b>001 — 064</b></div>
+ </section>
+ <section class="measurement-bar wrap" aria-label="核心数学概念">
+   <div><b>64</b><span>种卦象状态 <small>2⁶ POSSIBILITIES</small></span></div>
+   <div><b>192</b><span>单爻邻接边 <small>6-D HYPERCUBE</small></span></div>
+   <div><b>1.5</b><span>平均动爻数 <small>THREE-COIN MODEL</small></span></div>
+   <div class="measurement-note"><span class="status-pulse"></span><strong>六位状态，<br>一张变化地图。</strong></div>
+ </section>
+ <section id="divination" class="section wrap">
+   <div class="section-title"><div><div class="section-tag">01 / THE CASTING DESK</div><h2>掷一卦，<i>见其变。</i></h2></div><div class="section-desc">三枚铜钱 · 六次成卦</div></div>
+   <div class="experience-grid">
+     <div class="cast-panel">
+       <div class="panel-top"><span>CASTING TERMINAL</span><span class="small-label">仪式与随机</span></div>
+       <label class="field-title" for="question">此刻，你想问什么？</label>
+       <textarea id="question" rows="2" maxlength="160" placeholder="例如：这次考试，我应当重点调整什么？"></textarea>
+       <div class="topic-row"><span>提问领域</span><select id="topic" aria-label="提问领域"><option value="general">随缘一问</option><option value="study">学业 · 考试</option><option value="career">工作 · 合作</option><option value="relationship">感情 · 人际</option><option value="money">财务 · 规划</option><option value="life">生活 · 选择</option></select></div>
+       <div class="casting-orbit"><div class="orbit-track"></div><div class="coin coin-a" id="coin0">乾<small>3 / 2</small></div><div class="coin coin-b" id="coin1">坤<small>3 / 2</small></div><div class="coin coin-c" id="coin2">易<small>3 / 2</small></div><div class="orbit-cross" aria-hidden="true"></div></div>
+       <div class="line-title"><span>六爻生成记录</span><b id="cast-progress">0 / 6</b></div>
+       <div class="line-record" id="line-record" aria-live="polite"><div class="empty-lines">— 尚未起卦，爻象将从下往上生成 —</div></div>
+       <div class="cast-actions"><button id="cast-all" class="pill black">一键生成六爻 <span>↗</span></button><button id="cast-one" class="pill border">逐爻掷币</button><button id="cast-reset" class="icon-btn" aria-label="重置" title="重置">↺</button></div>
+       <details class="manual-mode"><summary>我有实体铜钱 / 直接录入爻值 <span>＋</span></summary><div class="manual-content"><p>从初爻（最下）到上爻（最上）输入六个数字：6 老阴、7 少阳、8 少阴、9 老阳。</p><div class="manual-row"><input id="manual-lines" inputmode="numeric" maxlength="18" placeholder="例如 7 8 9 8 7 6" aria-label="六爻数字，从下往上"><button id="apply-manual">生成</button></div></div></details>
+       <div class="cast-note">正面记 3，反面记 2；结果在浏览器生成。</div>
+     </div>
+     <div class="map-panel" id="atlas" aria-label="六十四卦状态可视化">
+       <div class="map-header"><div><span class="panel-overline">THE LIVING MATHEMATICAL FIELD</span><h3>六十四态 · <i>形态实验场</i></h3></div><div class="live-chip"><span></span> INTERACTIVE</div></div>
+       <div class="map-meta"><span><i class="legend-dot source"></i> 本卦</span><span><i class="legend-dot target"></i> 之卦</span><span><i class="legend-line"></i> 192 条单爻连接</span><span class="map-live-tag">● LIVE RENDER</span></div>
+       <div class="mode-toolbar" aria-label="三维视觉展示模式"><button type="button" class="mode-btn active" data-mode="dual" aria-pressed="true">融合场域</button><button type="button" class="mode-btn" data-mode="globe" aria-pressed="false">球面经纬</button><button type="button" class="mode-btn" data-mode="cube" aria-pressed="false">晶格立方</button><button type="button" class="mode-btn" data-mode="hyper" aria-pressed="false">六维投影</button><span>SWITCH THE REPRESENTATION ↗</span></div><div class="map-body"><div class="atlas-halo"></div><canvas id="atlas-canvas" tabindex="0" role="img" aria-label="持续旋转的三维球面、立方网格及六维投影。可切换形态。拖动可旋转，点击节点可探索卦象"></canvas><div class="map-corner map-corner-1">MATHEMATICAL ARTIFACT · NOT A PHYSICAL OBJECT</div><div class="map-corner map-corner-2">DRAG TO ROTATE ↔ · SELECT A NODE</div><div class="map-equation">64 STATES <span>·</span> 192 EDGES</div></div>
+       <div class="map-foot"><div><div class="map-foot-title" id="map-selected-title">11 · 泰 · 地天</div><span id="map-selected-info">示例态 · 111000 · 点击任意节点探索</span></div><div class="map-controls"><button id="atlas-pause" class="map-button">暂停旋转 Ⅱ</button><button id="atlas-focus" class="map-button">定位本卦 ↗</button></div></div>
+     </div>
+   </div>
+ </section>
+ <section id="reading" class="section reading-section wrap">
+   <div class="section-title"><div><div class="section-tag">02 / THE READING ENGINE</div><h2>有问题，<i>才有真正的解读。</i></h2></div><div class="section-desc">象意、原典、变化，一起看</div></div>
+   <div class="result-shell" id="result-shell">
+     <div class="result-cover"><div class="result-cover-left"><span class="result-eyebrow">CURRENT READING / 本次卦象</span><div class="result-heading"><span class="big-gua-icon" id="result-symbol">䷊</span><div><div class="small-caption" id="result-number">HEXAGRAM 11 · 示例</div><h3 id="result-name">泰</h3><div class="result-pair" id="result-pair">地天泰 · 示例展示</div></div></div><p class="result-summary" id="result-summary">完成一次起卦后，这里将根据实际本卦、动爻与变卦呈现有来源的文本与现代解读。</p></div><div class="result-cover-right"><span>HEXAGRAM / SIX-BIT EXPERIMENT</span><div class="result-hexline" id="result-line-svg"></div><div class="binary-footer" id="result-binary">111000 <span>→</span> 111000</div></div></div>
+     <div class="results-switch" role="tablist" aria-label="解读切换"><button class="tab active" role="tab" aria-selected="true" data-tab="interpret">现代解读</button><button class="tab" role="tab" aria-selected="false" data-tab="classical">卦辞 · 爻辞</button><button class="tab" role="tab" aria-selected="false" data-tab="change">动爻 · 变卦</button><button class="tab" role="tab" aria-selected="false" data-tab="math">数学视角</button></div>
+     <div id="result-body" class="result-body" aria-live="polite"></div>
+     <div class="results-end"><span><span class="dot-red">●</span> 文化反思与娱乐用途，不是科学预言或专业建议。</span><div><button id="copy-reading" class="link-button">复制本次解读 ↗</button><button id="download-reading" class="link-button">保存 JSON ↓</button></div></div>
+   </div>
+ </section>
+ <section id="insight" class="section wrap insight-section">
+   <div class="section-title"><div><div class="section-tag">03 / THE HYBRID READING ENGINE</div><h2>从卦象出发，<i>聊聊你的问题。</i></h2></div><div class="section-desc">按需解读 · 云端与本地</div></div>
+   <div class="insight-shell"><div class="insight-toolbar"><div><span class="micro-label">PRIVACY FIRST / FREE TIER FIRST</span><h3>想深入一点？让 AI 来读你的问题。</h3><p>云端优先，本机模型可选。只有点击深度解读，才会发送问题。</p></div><div class="insight-action"><button id="run-cloud-ai" class="pill black" type="button">云端 AI 深度解读 ↗</button><button id="run-local" class="pill border">生成离线解读 ↗</button><button id="copy-for-ai" class="pill border" type="button" title="复制经过校验的卦象结构与情境提问，在自己的 AI 对话应用中粘贴">复制到免费 AI ↗</button><button id="ask-ai" class="pill black" disabled>启动本机 AI ↗</button></div></div>
+      <div class="deep-ai-context" id="deep-ai-context">
+        <div class="micro-label">AI DEEP READING / 可选背景补充</div>
+        <p>多一点背景，解读更贴近你的情况。</p>
+        <div class="deep-ai-inputs">
+          <label>当前情况 / 遇到的困难<textarea id="ai-context" rows="2" maxlength="500" placeholder="例如：已连续复习三个月，英语分数稳定，但专业课近三次模拟下降……"></textarea></label>
+          <label>希望实现的目标<input id="ai-goal" maxlength="160" placeholder="例如：判断下周应该先补哪门课"></label>
+          <label>时间节点<input id="ai-timeframe" maxlength="160" placeholder="例如：还有 8 周考试"></label>
+        </div>
+        <div class="cloud-verify-row"><div id="turnstile-box" aria-live="polite"></div><p class="cloud-verify-help">验证只在点击深度解读后启动。</p></div>
+      </div>
+      <p class="cloud-privacy-note">云端解读需上传本次问题及卦象；首次使用会询问你的同意。</p>
+      <div class="local-model-toolbar"><div class="local-model-tag"><span class="local-led"></span><div><b>浏览器本地语言模型</b><small id="model-support">正在检测 WebGPU 支持情况…</small></div></div><div class="model-chooser"><label for="local-model-select">模型选择</label><select id="local-model-select" aria-label="本地模型"><option value="auto">自动选择适配的轻量模型</option></select><button id="model-load" class="map-button">下载并加载本地模型 ↗</button></div></div>
+      <div class="model-progress"><div class="model-progress-line"><i id="model-progress-fill"></i></div><p id="model-status" role="status">本机 AI 无需 API；首次使用需下载模型。</p></div>
+      <div id="insight-output" class="insight-output" aria-live="polite"><div class="insight-empty">写下问题并完成起卦后，这里会生成一份无需联网的结构化解卦报告。</div></div>
+      <details class="model-privacy"><summary>离线与隐私说明 +</summary><p>起卦与离线解读在浏览器进行。点击云端解读后，问题会发送给模型服务；本机 AI 则在设备端运行。请勿填写密码、证件号码等敏感信息。</p></details>
+      <div class="insight-footer"><span id="ai-status" role="status">READY / 本地规则已就绪 · 语言模型尚未加载</span><button id="insight-copy" class="link-button">复制本次分析 ↗</button></div>
+   </div>
+ </section>
+ <section class="section wrap deep-science">
+   <div class="section-title"><div><div class="section-tag">04 / THE MATHEMATICAL LENS</div><h2>从二进制，<i>走进六维空间。</i></h2></div><div class="section-desc">数学图论 × 可交互状态转移 × 概率模型</div></div>
+   <div class="science-grid"><article class="science-card"><span>MODEL 001 / BINARY</span><div class="science-art science-art-canvas"><canvas id="binary-canvas" aria-label="动态旋转的二进制状态球面"></canvas><div class="mini-art-caption">SIX BITS / TWO PHASES</div></div><h3>六位二进制</h3><p>一爻代表一个二值变量，六爻组成一个六位向量。8 个三爻组合形成八卦；两个三爻组拼接得到 64 种卦象。</p><strong>64 = 2⁶</strong></article>
+   <article class="science-card"><span>MODEL 002 / GRAPH THEORY</span><div class="science-art science-art-canvas" id="hamming-art"><canvas id="cube-canvas" aria-label="持续旋转的三维立方晶格和六维顶点投影"></canvas><div class="mini-art-caption">Q6 / PROJECTED GEOMETRY</div></div><h3>六维超立方体</h3><p>64 个状态、192 条单爻连接，组成六维超立方体的投影。</p><strong>H(x, y) = Σ (xᵢ ≠ yᵢ)</strong></article>
+   <article class="science-card"><span>MODEL 003 / PROBABILITY</span><div class="science-art science-art-canvas"><canvas id="prob-canvas" aria-label="铜钱概率波动、重复实验和粒子运动"></canvas><div class="mini-art-caption">1 : 3 : 3 : 1 / REAL-TIME</div></div><h3>三枚铜钱分布</h3><p>三枚公平铜钱的四种爻值，概率之比为 1:3:3:1。</p><strong>P(至少一动) = 1 − (3/4)⁶</strong></article></div>
+   <div class="math-interactive"><div class="math-copy"><div class="micro-label">INTERACTIVE MODEL 004 / TOPOLOGICAL EXPLORATION</div><h3>亲手改变一爻，<br>看六维网络如何连接。</h3><p>一卦对应一个六位状态，改变一爻，就走向一个相邻节点。</p><div class="math-bits" id="math-bits"></div><div class="math-readout" id="math-readout">单击任意一位，观察状态翻转</div><button id="math-reset" class="map-button">重置状态 ↺</button></div><div class="math-canvas-wrap"><canvas id="math-canvas" aria-label="六十四态数学网络动态投影"></canvas><span>6 DIMENSIONS · 64 VERTICES · 192 EDGES</span></div></div>
+   <div class="lab-strip"><div><span>让模型接受检验</span><b>随机性测试 · 10,000 次模拟实验</b><p id="sim-result">点击运行，比较模拟频率与理论分布。</p></div><button id="run-sim" class="pill black">运行实验 <span>↗</span></button></div>
+ </section>
+ <section id="methods" class="section wrap methods-section"><div class="section-title"><div><div class="section-tag">05 / METHODS & SOURCES</div><h2>把边界，<i>写在明处。</i></h2></div></div><div class="method-layout"><article><b>01</b><h3>经典文本不由 AI 编造</h3><p>全部 64 卦原文已从维基文库 EPUB 离线提取，包含 384 条爻辞；其中 60 卦仅作待校勘的来源候选展示，绝不标为第二底本已核准。</p><a href="https://zh.wikisource.org/wiki/周易" rel="noopener noreferrer" target="_blank">查看《周易》原文 ↗</a></article><article><b>02</b><h3>形式科学 ≠ 预测科学</h3><p>数学解释卦象结构，不证明未来可被卦象预测。</p><a href="#atlas">探索 64 态图谱 ↗</a></article><article><b>03</b><h3>本地默认 · WebGPU AI 可选</h3><p>起卦与可视化在浏览器完成。本机 AI 按需下载，云端 AI 需明确同意。</p><a href="#divination">试用起卦台 ↗</a></article></div></section>
+</main>
+<footer><div class="wrap footer-wrap"><div><span class="footer-logo">爻间 <small>/ YAO LAB</small></span><p>文化 × 数学 × 交互</p></div><div class="footer-credit"><p>DESIGNED & DEVELOPED BY <a href="https://github.com/ylliua1116" target="_blank" rel="noopener noreferrer">Yuli Liu ↗</a></p><p>© 2026 Yuli Liu · <a href="https://github.com/ylliua1116" target="_blank" rel="noopener noreferrer">@ylliua1116</a> · <a href="LICENSE" rel="license">PolyForm Shield（源码）</a> · <a href="LICENSE_CLASSICS.md" target="_blank" rel="noopener noreferrer">Wikisource BY-SA 3.0（经文来源）</a></p></div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="i18n.js"></script><script src="reading-en.js"></script><script src="reading-en-ui.js"></script><script src="data.js"></script><script src="viz.js"></script><script src="dynamic-en.js"></script><script src="classics-sourced.js"></script><script src="classics-epub-candidates.js"></script><script src="app.js"></script><script src="hex-lab.js"></script><script src="hex-orbit.js"></script><script src="insight.js"></script><script src="mini-viz.js"></script><script src="cloud-ai.js"></script>
+</body></html>

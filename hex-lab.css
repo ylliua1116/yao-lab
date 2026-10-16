@@ -1,0 +1,41 @@
+/* Copyright (c) 2026 Yuli Liu — YAO LAB. Source: PolyForm Shield 1.0.0; see LICENSE and NOTICE. */
+/* Bilingual six-bit laboratory, integrated into the result cover. */
+.result-cover{grid-template-columns:minmax(0,1fr) minmax(375px,.87fr);align-items:stretch}
+.result-cover-left{align-self:center}
+.result-cover-right{align-items:stretch;justify-content:flex-start;gap:12px;padding:24px 28px 21px;background:radial-gradient(ellipse at 70% 35%,#315449,#132b2c 65%,#112226);border-left:1px solid #496e61;color:#e8efe3;min-width:0}
+.result-cover-right>span{font:10px var(--mono);color:#d6d0b8;letter-spacing:1.8px}
+.result-hexline{max-width:100%;width:100%;margin:4px auto 0;display:grid;gap:4px}
+.hexexp-line{display:grid;grid-template-columns:24px 1fr 19px;gap:8px;align-items:center;width:100%;min-height:31px;padding:4px 9px;border-radius:7px;border:1px solid transparent;color:#a3c6b8;background:rgba(180,230,203,.025);transition:background .2s,border-color .2s,transform .2s}
+.hexexp-line:hover,.hexexp-line:focus-visible{background:#a7dec415;border-color:#88cbb0;outline:0;transform:translateX(2px)}
+.hexexp-line:focus-visible{box-shadow:0 0 0 2px #dcb782}
+.hexexp-index{font:10px var(--mono);color:#87a69d}
+.hexexp-bars{display:flex;justify-content:center;align-items:center;gap:11%;height:12px;width:100%}
+.hexexp-bars>i{height:8px;background:linear-gradient(180deg,#d6eed9,#a2d9bf);border-radius:2px;box-shadow:0 0 13px #8cdcb433;flex:1;display:block}
+.hexexp-bars.broken>i{max-width:45%}
+.hexexp-line.is-flipped{background:#ad815a18;border-color:#c9a27488}
+.hexexp-line.is-flipped .hexexp-bars>i{background:linear-gradient(180deg,#f0d3a1,#c99666);box-shadow:0 0 14px #d8ae7c55}
+.hexexp-indicator{color:#9ccab0;font:15px/1 var(--mono);text-align:center}
+.hexexp-line.is-flipped .hexexp-indicator{color:#eac38d}
+.hexexp-line.was-moving:not(.is-flipped) .hexexp-indicator{color:#e0b581}
+.result-cover-right .binary-footer{font:17px/1.4 var(--mono);margin:0;display:flex;gap:11px;justify-content:center;letter-spacing:2px;color:#d2e6dc}
+.hexexp-binary-live{color:#e9c38c}.hexexp-arrow{color:#92bdab}
+.hexexp-compass{border-top:1px solid #48655a55;border-bottom:1px solid #48655a55;min-height:91px;width:100%;display:flex;justify-content:center;background:radial-gradient(ellipse,#4c685520,transparent 70%)}
+.hexexp-compass svg{display:block;width:min(100%,360px);height:99px;overflow:visible}
+.hexexp-main-value{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hexexp-main-value span{font:10px var(--mono);color:#9ab9aa;letter-spacing:1px}
+.hexexp-main-value strong{font:500 18px var(--serif);color:#f3dfbf;text-align:right}
+.hexexp-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:11px}
+.hexexp-stats>div{border:1px solid #71998d66;border-radius:7px;padding:10px 8px;background:#09222255}
+.hexexp-stats small{display:block;color:#9cbbae;letter-spacing:.8px;font:9px/1.4 var(--mono);min-height:18px}
+.hexexp-stats b{display:block;color:#e6e5cd;font:23px/1.3 var(--mono)}
+.hexexp-stats em{font:10px var(--mono);color:#97bbae}
+.hexexp-actions{display:flex;gap:8px;margin-top:3px}
+.hexexp-actions button{flex:1;background:#e5c08f;border:1px solid #e5c08f;border-radius:7px;color:#1a3331;padding:10px 6px;font-size:11px;font-weight:600;white-space:normal}
+.hexexp-actions button:last-child{background:transparent;border-color:#85a69a;color:#d2e4d8}
+.hexexp-actions button:hover{filter:brightness(1.1)}
+.hexexp-note{font:10px/1.8 var(--sans);color:#a6c4b7;margin:0}
+@media(max-width:1000px){.result-cover{grid-template-columns:minmax(0,1fr) minmax(325px,.95fr)}.result-cover-right{padding:20px}}
+@media(max-width:720px){.result-cover{grid-template-columns:1fr}.result-cover-right{border-left:0;border-top:1px solid #43655c;padding:20px 18px 24px}.hexexp-line{min-height:36px}.hexexp-compass svg{height:98px}.hexexp-stats small{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.hexexp-line{transition:none}}
+.hexexp-compass [data-neighbor]{cursor:pointer;outline:none;transition:fill .18s,stroke .18s}
+.hexexp-compass [data-neighbor]:hover,.hexexp-compass [data-neighbor]:focus{fill:#e4bd85;stroke:#f7ddb3;stroke-width:2}

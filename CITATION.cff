@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use YAO LAB in research or a derivative project, please cite this repository and preserve the applicable copyright notices."
+type: software
+authors:
+  - family-names: Liu
+    given-names: Yuli
+title: "YAO LAB: The Living Geometry of Change"
+abstract: "An interactive, bilingual I Ching laboratory connecting six-bit state-space geometry, three-coin probability experiments, classical textual reading, and optional AI-assisted reflection."
+repository-code: "https://github.com/ylliua1116/yao-lab"
+url: "https://github.com/ylliua1116/yao-lab"
+keywords:
+  - I Ching
+  - hexagrams
+  - graph theory
+  - hypercube
+  - interactive visualization
+  - digital humanities
+  - research software
